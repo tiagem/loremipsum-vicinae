@@ -43,7 +43,9 @@ Lorem Ipsum is a [Vicinae](https://vicinae.com) extension for Linux and macOS. P
 
 ## Installation
 
-Install and start [Vicinae](https://docs.vicinae.com/), then:
+Install it from the [Vicinae store](https://docs.vicinae.com/install-extensions): open Vicinae, search for the store, then install **Lorem Ipsum**.
+
+Or from source:
 
 ```bash
 git clone https://github.com/TiageMiguel/loremipsum-vicinae.git
