@@ -1,4 +1,4 @@
-import { Clipboard, closeMainWindow, getPreferenceValues, showToast, Toast } from "@vicinae/api";
+import { Clipboard, closeMainWindow, getPreferenceValues, showHUD, showToast, Toast } from "@vicinae/api";
 
 export type ActionPreference = "clipboard" | "paste" | "pasteAndCopy";
 
@@ -16,21 +16,25 @@ export function getPrefs(): Preferences {
 }
 
 export async function produceOutput(content: string, action = getPrefs().action): Promise<void> {
-  await closeMainWindow();
+  try {
+    if (action === "paste" || action === "pasteAndCopy") {
+      await closeMainWindow();
+      await Clipboard.paste(content);
+      if (action === "pasteAndCopy") {
+        await Clipboard.copy(content);
+      }
+      await showHUD(action === "pasteAndCopy" ? "Pasted and copied" : "Pasted");
+      return;
+    }
 
-  switch (action) {
-    case "paste":
-      await Clipboard.paste(content);
-      await showToast({ style: Toast.Style.Success, title: "Pasted" });
-      break;
-    case "pasteAndCopy":
-      await Clipboard.paste(content);
-      await Clipboard.copy(content);
-      await showToast({ style: Toast.Style.Success, title: "Pasted and copied" });
-      break;
-    default:
-      await Clipboard.copy(content);
-      await showToast({ style: Toast.Style.Success, title: "Copied to clipboard" });
+    await Clipboard.copy(content);
+    await showHUD("Copied to clipboard");
+  } catch (error) {
+    await showToast({
+      style: Toast.Style.Failure,
+      title: action === "clipboard" ? "Couldn't copy" : "Couldn't paste",
+      message: error instanceof Error ? error.message : String(error),
+    });
   }
 }
 

@@ -100,6 +100,11 @@ export default function GenerateCommand() {
           />
         );
       })}
+      <List.EmptyView
+        icon={Icon.Paragraph}
+        title="No matching count"
+        description="Type a count such as 3, 5p, 20w, or 8l."
+      />
     </List>
   );
 }

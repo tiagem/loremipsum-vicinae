@@ -3,14 +3,15 @@
   "name": "lorem-ipsum",
   "title": "Lorem Ipsum",
   "description": "Generate placeholder text instantly — paragraphs, sentences, words, lists, and HTML.",
-  "icon": "extension_icon.png",
-  "author": "tiago",
+  "icon": "extension-icon.png",
+  "author": "tiagemiguel",
   "contributors": [],
   "pastContributors": [],
   "categories": ["Developer Tools", "Design Tools", "Productivity"],
   "keywords": ["lorem", "ipsum", "placeholder", "dummy", "text", "generator"],
   "platforms": ["Linux", "macOS"],
   "license": "MIT",
+  "version": "1.0.0",
   "commands": [
     {
       "name": "generate",
@@ -26,7 +27,7 @@
       "subtitle": "Lorem Ipsum",
       "description": "Generate paragraphs and copy or paste them immediately",
       "mode": "no-view",
-      "keywords": ["paragraph", "copy"],
+      "keywords": ["paragraph", "paste", "copy"],
       "arguments": [
         {
           "name": "count",
@@ -42,7 +43,7 @@
       "subtitle": "Lorem Ipsum",
       "description": "Generate sentences and copy or paste them immediately",
       "mode": "no-view",
-      "keywords": ["sentence", "copy"],
+      "keywords": ["sentence", "paste", "copy"],
       "arguments": [
         {
           "name": "count",
@@ -58,7 +59,7 @@
       "subtitle": "Lorem Ipsum",
       "description": "Generate words and copy or paste them immediately",
       "mode": "no-view",
-      "keywords": ["word", "copy"],
+      "keywords": ["word", "paste", "copy"],
       "arguments": [
         {
           "name": "count",
@@ -111,7 +112,8 @@
   ],
   "scripts": {
     "build": "vici build",
-    "dev": "vici develop"
+    "dev": "vici develop",
+    "lint": "vici lint"
   },
   "dependencies": {
     "@vicinae/api": "^0.25.0"
