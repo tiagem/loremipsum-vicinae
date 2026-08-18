@@ -48,7 +48,7 @@ Install it from the [Vicinae store](https://docs.vicinae.com/install-extensions)
 Or from source:
 
 ```bash
-git clone https://github.com/TiageMiguel/loremipsum-vicinae.git
+git clone https://github.com/tiagem/loremipsum-vicinae.git
 cd loremipsum-vicinae
 npm install
 npm run build
